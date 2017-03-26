@@ -6,12 +6,14 @@ namespace FondBot\Mercator;
 
 use FondBot\Mercator\Contracts\Driver;
 use FondBot\Mercator\Drivers\WooCommerce\WooCommerceServiceProvider;
+use FondBot\Providers\ServiceProvider as FondBotServiceProvider;
 use Illuminate\Support\ServiceProvider as BaseServiceProvider;
 
 class ServiceProvider extends BaseServiceProvider
 {
     public function register()
     {
+        $this->app->register(FondBotServiceProvider::class);
         $this->app->register(WooCommerceServiceProvider::class);
 
         $this->console();
